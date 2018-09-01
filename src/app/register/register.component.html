@@ -1,40 +1,65 @@
 <div class="m-5">
 
-<form>
+<form (ngSubmit) = "onSubmit(signUpForm)" #signUpForm = "ngForm">
     <div class="form-row">
+      
       <div class = "form-group col-md-6">
         <label for="inputFName">First Name</label>
-        <input [(ngModel)] = "fname" name ="firstName" type="text"   class="form-control" id="inputFName" placeholder="First Name"> {{fname}}
+        <input 
+            [(ngModel)] = "userDetails.firstName" name ="firstName" type="text"
+            required
+            class="form-control" id="inputFName" placeholder="First Name"> 
+            {{userDetails.firstName}}
       </div>
+
       <div class = "form-group col-md-6">
           <label for="inputLName">Last Name</label>
-          <input [(ngModel)] = "lname" type="text" name = "lastName" class="form-control" id="inputLName" placeholder="Last Name"> {{lname}}
-        </div>
+          <input 
+              [(ngModel)] = "userDetails.lastName" type="text" name = "lastName" 
+              required
+              class="form-control" id="inputLName" placeholder="Last Name"> 
+              {{userDetails.lastName}}
+      </div>
 
     </div>
+    
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="inputEmail4">Email</label>
-        <input [(ngModel)] = "email" type="email" name = "emailId" class="form-control" id="inputEmail4" placeholder="Email"> {{email}}
+        <input 
+            [(ngModel)] = "userDetails.emailID" type="email" name = "emailId" 
+            required
+            class="form-control" id="inputEmail4" placeholder="Email"> 
+            {{userDetails.emailID}}
       </div>
+      
       <div class="form-group col-md-6">
         <label for="inputPassword4">Password</label>
-        <input [(ngModel)] = "password" type="password" name = "passwordField" class="form-control" id="inputPassword4" placeholder="Password">
-        {{password}}
+        <input 
+            [(ngModel)] = "userDetails.password" type="password" name = "passwordField" 
+            required
+            class="form-control" id="inputPassword4" placeholder="Password">
+            {{userDetails.password}}
       </div>
     </div>
+    
     <div class="form-group">
       <label for="inputAddress">Address</label>
-      <input [(ngModel)] = "address" name = "addressField"type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-      {{address}}
+      <input 
+          [(ngModel)] = "userDetails.address" name = "addressField"type="text"
+          class="form-control" id="inputAddress" placeholder="1234 Main St">
+          {{userDetails.address}}
     </div>
+    
     <div class="form-group">
       <label for="inputAddress2">Address 2</label>
-      <input [(ngModel)] = "address2" name = "address2Field" type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-      {{address2}}
+      <input 
+          [(ngModel)] = "userDetails.address2" name = "address2Field" type="text"
+          class="form-control"  id="inputAddress2" placeholder="Apartment, studio, or floor">
+          {{userDetails.address2}}
     </div>
     
     
-    <button type="submit" class="btn btn-primary">Sign up</button>
+    <button type="submit" class="btn btn-primary" [disabled] ="!signUpForm.form.valid" >Sign up</button>
   </form>
 </div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm} from '@angular/forms';
+import { User } from './user';
+import { EndpointsService } from '../endpoints.service';
 
 @Component({
   selector: 'app-register',
@@ -7,15 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  public fname = ""
-  public lname = ""
-  public email = ""
-  public password = ""
-  public address = ""
-  public address2 = ""
-  constructor() { }
+  userDetails = new User('','','','','','')
 
+  constructor(private _endpoints : EndpointsService) {
+
+  }
   ngOnInit() {
   }
 
+  onSubmit(form : NgForm) {
+    console.log("Submit works")
+    console.log(this.userDetails)
+    let formData = form.value
+    this._endpoints.enroll(this.userDetails)
+      .subscribe(
+        data => console.log("It worked! ",data),
+        error => console.log("Error!! " ,error)
+      )
+  }
 }
