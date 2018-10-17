@@ -14,7 +14,7 @@ export class AppComponent {
   }
 
 loginClick() {
-  console.log("This works")
+  console.log('This works');
   this.router.navigateByUrl('/login');
 }
 

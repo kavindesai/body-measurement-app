@@ -7,10 +7,32 @@ import { User } from './register/user';
 })
 export class EndpointsService {
 
-  _url = '';
-  constructor(private _http: HttpClient) { }
+  private isUserLoggedIn;
+  private username;
+  _url = 'http://localhost:3000';
 
-  enroll(user : User) {
-    return this._http.post<any>(this._url,user);
+  constructor(private _http: HttpClient) {
+    this.isUserLoggedIn = false;
+   }
+
+   setUserLoggenIn(username) {
+     this.isUserLoggedIn = true;
+     this.username = username;
+   }
+
+   getCurUser() {
+     return this.username;
+   }
+
+   getUserLoggedIn() {
+     return this.isUserLoggedIn;
+   }
+
+   logout() {
+     this.isUserLoggedIn = false;
+   }
+
+  enroll(user: User) {
+    return this._http.post<any>(this._url + '/register', user);
   }
 }

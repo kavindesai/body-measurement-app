@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { EndpointsService } from '../endpoints.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,7 +9,14 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
-  constructor( private router : Router) { }
+  username = '';
+  isUserLoggedIn;
+  constructor( private router : Router, private _endpoints: EndpointsService) {
+      this.isUserLoggedIn = _endpoints.getUserLoggedIn();
+      if (this.isUserLoggedIn === true) {
+          this.username = _endpoints.getCurUser();
+      }
+  }
 
   ngOnInit() {
   }
@@ -20,5 +28,18 @@ export class NavComponent implements OnInit {
   registerClick() {
     this.router.navigateByUrl('/register');
   }
+
+  logoutClick() {
+    this._endpoints.logout();
+    this.router.navigateByUrl('/');
+  }
+
+  goToProfile() {
+    let profile_url = '/profile/' + this.username;
+    console.log(profile_url);
+    this.router.navigateByUrl(profile_url);
+  }
+
+
 
 }

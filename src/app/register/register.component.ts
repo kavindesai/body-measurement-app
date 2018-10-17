@@ -10,22 +10,25 @@ import { EndpointsService } from '../endpoints.service';
 })
 export class RegisterComponent implements OnInit {
 
-  userDetails = new User('','','','','','')
+  userDetails = new User('', '', '', '', '', '');
 
-  constructor(private _endpoints : EndpointsService) {
+  constructor(private _endpoints: EndpointsService) {
 
   }
   ngOnInit() {
   }
 
-  onSubmit(form : NgForm) {
-    console.log("Submit works")
-    console.log(this.userDetails)
-    let formData = form.value
+  onSubmit(form: NgForm) {
+    console.log('Submit works');
+    console.log(this.userDetails);
+    let formData = form.value;
+    
     this._endpoints.enroll(this.userDetails)
       .subscribe(
-        data => console.log("It worked! ",data),
-        error => console.log("Error!! " ,error)
-      )
+        data => console.log('A6It worked! ', data),
+        error => console.log('Error!! ' , error)
+      );
   }
+
+
 }
