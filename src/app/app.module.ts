@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { NavComponent } from './nav/nav.component';
+import { EndpointsService } from './endpoints.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { NavComponent } from './nav/nav.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [EndpointsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

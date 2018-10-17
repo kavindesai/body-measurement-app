@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm} from '@angular/forms';
 import { User } from './user';
 import { EndpointsService } from '../endpoints.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,21 +13,24 @@ export class RegisterComponent implements OnInit {
 
   userDetails = new User('', '', '', '', '', '');
 
-  constructor(private _endpoints: EndpointsService) {
+  constructor(private _endpoints: EndpointsService, private router: Router) {
 
   }
   ngOnInit() {
   }
 
   onSubmit(form: NgForm) {
-    console.log('Submit works');
-    console.log(this.userDetails);
     let formData = form.value;
     
     this._endpoints.enroll(this.userDetails)
       .subscribe(
-        data => console.log('A6It worked! ', data),
-        error => console.log('Error!! ' , error)
+        res => {
+          if (res.name === 'DUPLICATE') {
+            window.alert('Email ID already exists');
+          } else {
+            this._endpoints.setUserLoggenIn(res.name);
+            }
+        },
       );
   }
 

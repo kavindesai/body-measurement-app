@@ -32,7 +32,29 @@ router.get('/',function(req,res){
 
 router.post('/register', function(req,res) {
     console.log(req.body);
-    res.status(200).send({"message" : "Yup got your data"});
+    sql_query1 = "INSERT INTO username VALUES('"+req.body.emailID+"','"+req.body.firstName+"');";
+    console.log(sql_query1);
+    connection.query(sql_query1,function(err,result,fields){
+
+        if(err){
+            console.log(err);
+            if(err.code == 'ER_DUP_ENTRY') {
+                res.send({name:"DUPLICATE"});
+            }else {
+                throw err;
+            }
+        }else {
+            sql_query2 = "INSERT INTO user_details VALUES('"+req.body.firstName+"','"+req.body.lastName+"','"+req.body.emailID+"','"+req.body.password+"','"+req.body.address+"','"+req.body.address2+"');";
+            console.log(sql_query2);
+            connection.query(sql_query2,function(err,result,fields){
+                if(err)
+                    throw err;
+            });
+            res.send({name:req.body.firstName});
+        }
+        
+    });
+
 });
 
 module.exports = router;

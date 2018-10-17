@@ -9,33 +9,32 @@ import { EndpointsService } from '../endpoints.service';
 })
 export class NavComponent implements OnInit {
 
-  username = '';
-  isUserLoggedIn;
+  currUser = '';
+  userLogged = false;
   constructor( private router : Router, private _endpoints: EndpointsService) {
-      this.isUserLoggedIn = _endpoints.getUserLoggedIn();
-      if (this.isUserLoggedIn === true) {
-          this.username = _endpoints.getCurUser();
-      }
+    console.log('Constructor was called');
   }
 
   ngOnInit() {
+    this.isUserLoggedIn();
   }
 
-  loginClick() {
-    this.router.navigateByUrl('/login');
+  isUserLoggedIn() {
+    if (this._endpoints.getUserLoggedIn()) {
+      this.currUser = this._endpoints.getCurUser();
+      return true;
+    } else {
+      return false;
+    }
   }
 
-  registerClick() {
-    this.router.navigateByUrl('/register');
-  }
 
   logoutClick() {
     this._endpoints.logout();
-    this.router.navigateByUrl('/');
   }
 
   goToProfile() {
-    let profile_url = '/profile/' + this.username;
+    let profile_url = '/profile/' + this.currUser;
     console.log(profile_url);
     this.router.navigateByUrl(profile_url);
   }
