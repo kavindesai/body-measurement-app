@@ -11,6 +11,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { NavComponent } from './nav/nav.component';
 import { EndpointsService } from './endpoints.service';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { EndpointsService } from './endpoints.service';
     routingComponents,
     HomeComponent,
     NavComponent,
+    ProfileComponent,
     
   ],
   imports: [
