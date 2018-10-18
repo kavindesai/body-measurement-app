@@ -1,1 +1,28 @@
-<button type="button" class="btn btn-primary">Submit</button>
+<div class="container">
+
+    <form (ngSubmit) = "onSubmit(loginForm)" #loginForm = "ngForm">  
+        <div class="row">
+            <div class="col"></div>
+        
+            <div class="col">
+            
+                <label class="pad-top" for="inputEmail4">Email</label>
+                <input 
+                    [(ngModel)] = "loginDetails.emailID" type="email" name = "emailId" 
+                    required
+                    class="form-control" id="inputEmail4" placeholder="Email"> 
+                    {{loginDetails.emailID}}
+            
+                <label class="pad-top" for="inputPassword4">Password</label>
+                <input 
+                    [(ngModel)] = "loginDetails.password" type="password" name = "passwordField" 
+                    required
+                    class="form-control" id="inputPassword4" placeholder="Password">
+                    {{loginDetails.password}}
+
+                <button type="submit" class="btn btn-primary pad-top extra" [disabled] ="!loginForm.form.valid" >Sign up</button>
+            </div>
+            <div class="col"></div>      
+        </div>
+    </form>   
+</div>

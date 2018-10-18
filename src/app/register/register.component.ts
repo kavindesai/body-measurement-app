@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
             window.alert('Email ID already exists');
           } else {
             this.router.navigate(['/profile', res.name]);
-            this._endpoints.setUserLoggenIn(res.name);
+            this._endpoints.setUserLoggenIn(res.name, res.emailID);
             }
         },
       );

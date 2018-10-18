@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  attributes = [ 'Weight', 'Chest' , 'Biceps' , 'Thigh' , 'Hips' ];
+  attributes = [ 'Weight', 'Chest' , 'Waist' , 'Thigh' , 'Neck' ];
   test = [37, 36.5, 36, 35, 32, 30];
 
   public show = false;
