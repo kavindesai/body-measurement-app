@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
           if (res.name === 'DUPLICATE') {
             window.alert('Email ID already exists');
           } else {
-            this.router.navigate(['/profile', res.name]);
+            this.router.navigate(['/profile', this.userDetails.emailID]);
             this._endpoints.setUserLoggenIn(res.name, res.emailID);
             }
         },

@@ -13,6 +13,7 @@ export class EndpointsService {
   private emailId;
   _url = 'http://localhost:3000';
 
+
   constructor(private _http: HttpClient) {
     this.isUserLoggedIn = false;
    }
@@ -45,5 +46,12 @@ export class EndpointsService {
 
   login(loginDetails: Login) {
     return this._http.post<any>(this._url + '/login', loginDetails);
+  }
+
+  get_values(attribute: String, email: String) {
+    let test_data = { att: attribute, emailId : email};
+    console.log('About to call');
+    return this._http.post<any>(this._url + '/profile', test_data);
+    
   }
 }

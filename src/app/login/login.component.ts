@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   // }
 
   onSubmit(form: NgForm) {
-    let formData = form.value;
     console.log('reached here');
     this._endpoints.login(this.loginDetails)
       .subscribe(
@@ -32,7 +31,7 @@ export class LoginComponent implements OnInit {
           if (res.name === 'ERROR') {
             window.alert('Incorrect username or password');
           } else {
-           this.router.navigate(['/profile', res.name]);
+           this.router.navigate(['/profile', this.loginDetails.username]);
            this._endpoints.setUserLoggenIn(res.name, this.loginDetails.username);
             }
         },
