@@ -122,6 +122,27 @@ router.post('/delete',function(req,res){
 });
 
 
+router.post('/add',function(req,res){
+    email = req.body.e;
+    attribute = req.body.a;
+    date = req.body.d;
+    value = req.body.v;
+    sql_query = "INSERT INTO " + attribute + " values('"+email+"', '" + date + "',"+ value +");";
+    console.log(sql_query);
+    connection.query(sql_query,function(err,result,fields){
+        if(err) {
+            if(err.code == 'ER_DUP_ENTRY') {
+                res.send({name:"DUPLICATE"});
+            }else {
+                throw err;
+            }
+        }else {
+            res.send({name:'Worked'});
+        }
+    });
+})
+
+
 
 
 
