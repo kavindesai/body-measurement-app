@@ -1,3 +1,23 @@
-<p>
-  add works!
-</p>
+<div class="container">
+  <form (ngSubmit) = "onSubmit(addVal)" #addVal = "ngForm">
+  <div class="row pad-top">
+    <div class="col-4">
+      <div class="form-group pad-top">
+          <label class=" pad-small" for="exampleFormControlInput1">Date</label>
+          <input type="email" class="form-control " [(ngModel)] = "date" [ngModelOptions]="{standalone: true}" id="exampleFormControlInput1" placeholder="01">
+
+          <label class=" pad-small"  for="exampleFormControlInput1">Month</label>
+          <input type="email" class="form-control" [(ngModel)] = "month" [ngModelOptions]="{standalone: true}" id="exampleFormControlInput1" placeholder="11">
+
+          <label class=" pad-small"  for="exampleFormControlInput1">Year</label>
+          <input type="email" class="form-control" [(ngModel)] = "year" [ngModelOptions]="{standalone: true}" id="exampleFormControlInput1" placeholder="2017">
+
+          <label class=" pad-small"  for="exampleFormControlInput1">Value</label>
+          <input type="email" class="form-control" [(ngModel)] = "new_value" [ngModelOptions]="{standalone: true}" id="exampleFormControlInput1" placeholder="165">
+
+          <button type="submit" class="btn btn-primary pad-top" [disabled] ="!addVal.form.valid" >Add</button>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
