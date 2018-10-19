@@ -2,7 +2,7 @@
   <div class="col-4 pad">Attributes
       <div class = "container">
           <div class="btn-group-vertical">
-            <button type="button" class="btn btn-outline-dark pad" *ngFor = "let attribute of attributes"(mouseover)="toggle(attribute)" (mouseout)="toggle(attribute)">{{attribute}}</button>
+            <button type="button" class="btn btn-outline-dark pad" *ngFor = "let attribute of attributes"(mouseover)="toggle(attribute)" (mouseout)="toggle(attribute)" (click)="select_attribute(attribute)">{{attribute}}</button>
             <br>
           </div>
         </div>
@@ -11,8 +11,7 @@
   <div class="col-8 pad">Values
     <ng-container *ngIf="show">
       <ul>
-        <li *ngFor="let value of concat_values" > {{value}}
-        
+        <li *ngFor="let value of concat_values" > {{value}}      
         </li>
       </ul>
 

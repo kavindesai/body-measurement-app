@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EndpointsService } from '../endpoints.service';
 import {ActivatedRoute} from '@angular/router';
-import { CDK_CONNECTED_OVERLAY_SCROLL_STRATEGY_PROVIDER_FACTORY } from '@angular/cdk/overlay/typings/overlay-directives';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +11,6 @@ import { CDK_CONNECTED_OVERLAY_SCROLL_STRATEGY_PROVIDER_FACTORY } from '@angular
 export class ProfileComponent implements OnInit {
 
   attributes = [ 'Weight', 'Chest' , 'Waist' , 'Thigh' , 'Neck' ];
-  test = [37, 36.5, 36, 35, 32, 30];
   date_values = [0];
   attribute_values = [0];
   concat_values = ['0 0'];
@@ -19,7 +18,7 @@ export class ProfileComponent implements OnInit {
 
   public show = false;
 
-  constructor(private _endpoints: EndpointsService, private _route: ActivatedRoute) {
+  constructor(private _endpoints: EndpointsService, private _route: ActivatedRoute, private _router: Router) {
     this._route.params.subscribe( params => this.email = params.email);
    }
 
@@ -27,17 +26,13 @@ export class ProfileComponent implements OnInit {
   }
 
   toggle(name) {
-   // alert(name);
-   console.log(this.email);
-   console.log(name);
-
+   
     if (this.show === true) {
         this.show = false;
         this.date_values = [0];
         this.attribute_values = [0];
         this.concat_values = ['0 0'];
     } else {
-      console.log('About to call. Shit gonna go down');
       this._endpoints.get_values(name, this.email)
         .subscribe(
           res => {
@@ -49,9 +44,7 @@ export class ProfileComponent implements OnInit {
           }
         );
       this.show = true;
-      console.log(this.date_values);
     }
-    
   }
   concat_it() {
     this.concat_values = [];
@@ -59,6 +52,10 @@ export class ProfileComponent implements OnInit {
         this.concat_values.push(this.date_values[i] + '----' + this.attribute_values[i]);
     }
     console.log(this.concat_values);
+  }
+
+  select_attribute(attribute) {
+    this._router.navigate(['/profile', this.email, attribute]);
   }
 
 }

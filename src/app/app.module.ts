@@ -12,6 +12,7 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { NavComponent } from './nav/nav.component';
 import { EndpointsService } from './endpoints.service';
 import { ProfileComponent } from './profile/profile.component';
+import { AttributeComponentComponent } from './attribute-component/attribute-component.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ProfileComponent } from './profile/profile.component';
     HomeComponent,
     NavComponent,
     ProfileComponent,
+    AttributeComponentComponent,
     
   ],
   imports: [
