@@ -1,3 +1,25 @@
-<p>
-  attribute works!
-</p>
+<div class = "col-8 pad-top">
+    <div>
+      {{attribute}}
+    </div>
+    <div class= "pad-top">
+
+      <ul>
+        <li *ngFor = "let x of concat_values" >{{x}}</li>
+      </ul>
+    </div>
+
+    <div class="pad-top"></div>
+    <div class="pad-top"></div>
+
+    <button type="button" class="btn btn-outline-primary pad-sides">Add</button>
+    <button type="button" class="btn btn-outline-warning pad-sides">Delete</button>
+    <button type="button" class="btn btn-outline-success pad-sides">Visualize</button>
+
+
+
+</div>
+
+<div class = "col-4 pad-top">
+    <button type="button" class="btn btn-outline-primary pad-top pad-sides" (click) = "goBack()">Back</button>
+</div>

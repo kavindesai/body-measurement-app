@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
   concat_it() {
     this.concat_values = [];
     for (let i = 0; i < this.attribute_values.length ; i++) {
-        this.concat_values.push(this.date_values[i] + '----' + this.attribute_values[i]);
+        this.concat_values.push(this.date_values[i] + '-----' + this.attribute_values[i]);
     }
     console.log(this.concat_values);
   }

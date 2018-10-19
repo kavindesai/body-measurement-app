@@ -8,8 +8,9 @@ import { AttributeComponent } from './attribute/attribute.component';
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
-    {path: 'profile/:email', component : ProfileComponent},
-    {path: 'profile/:email/:attribute', component : AttributeComponent}
+    {path: 'profile/:email/:attribute', component : AttributeComponent},
+    {path: 'profile/:email', component : ProfileComponent}
+    
 ];
 
 @NgModule({
@@ -17,4 +18,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [ LoginComponent, RegisterComponent, ProfileComponent ]
+export const routingComponents = [ LoginComponent, RegisterComponent, ProfileComponent, AttributeComponent ];
