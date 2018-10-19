@@ -45,6 +45,10 @@ export class AttributeComponent implements OnInit {
     console.log(this.concat_values);
   }
 
+  visualizeIt() {
+    this._router.navigate(['/profile', this.email, this.attribute, 'visualize']);
+  }
+
   goBack() {
     this._router.navigate(['/profile', this.email]);
   }

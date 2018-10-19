@@ -13,6 +13,7 @@ import { NavComponent } from './nav/nav.component';
 import { EndpointsService } from './endpoints.service';
 import { ProfileComponent } from './profile/profile.component';
 import { AttributeComponent } from './attribute/attribute.component';
+import { VisualizeComponent } from './visualize/visualize.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AttributeComponent } from './attribute/attribute.component';
     NavComponent,
     ProfileComponent,
     AttributeComponent,
+    VisualizeComponent,
   ],
   imports: [
     BrowserModule,

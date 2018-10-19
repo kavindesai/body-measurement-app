@@ -20,8 +20,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    let formData = form.value;
-    
     this._endpoints.enroll(this.userDetails)
       .subscribe(
         res => {

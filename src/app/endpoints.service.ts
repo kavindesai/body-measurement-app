@@ -52,6 +52,5 @@ export class EndpointsService {
     let test_data = { att: attribute, emailId : email};
     console.log('About to call');
     return this._http.post<any>(this._url + '/profile', test_data);
-    
   }
 }

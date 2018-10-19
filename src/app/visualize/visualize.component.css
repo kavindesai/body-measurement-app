@@ -1,0 +1,13 @@
+.pad {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.justified {
+    align-content: center;
+}
+
+.sides {
+    margin-left: 25px;
+    margin-right: 25px;
+}
