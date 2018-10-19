@@ -14,6 +14,8 @@ import { EndpointsService } from './endpoints.service';
 import { ProfileComponent } from './profile/profile.component';
 import { AttributeComponent } from './attribute/attribute.component';
 import { VisualizeComponent } from './visualize/visualize.component';
+import { DeleteComponent } from './delete/delete.component';
+import { AddComponent } from './add/add.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { VisualizeComponent } from './visualize/visualize.component';
     ProfileComponent,
     AttributeComponent,
     VisualizeComponent,
+    DeleteComponent,
+    AddComponent,
   ],
   imports: [
     BrowserModule,
