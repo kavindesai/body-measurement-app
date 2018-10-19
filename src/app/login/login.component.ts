@@ -29,11 +29,11 @@ export class LoginComponent implements OnInit {
     this._endpoints.login(this.loginDetails)
       .subscribe(
         res => {
-          if (res.name === 'DUPLICATE') {
-            window.alert('Email ID already exists');
+          if (res.name === 'ERROR') {
+            window.alert('Incorrect username or password');
           } else {
-            this.router.navigate(['/profile', res.name]);
-            this._endpoints.setUserLoggenIn(res.name, res.emailID);
+           this.router.navigate(['/profile', res.name]);
+           this._endpoints.setUserLoggenIn(res.name, this.loginDetails.username);
             }
         },
       );

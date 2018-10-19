@@ -57,4 +57,27 @@ router.post('/register', function(req,res) {
 
 });
 
+router.post('/login',function(req,res){
+    console.log(req.body);
+    username = req.body.username;
+    password = req.body.password;
+    sql_query = "SELECT fname FROM user_details where email = '"+username+"' and password = '"+password+"';";
+    console.log(sql_query);
+    // no ID found
+    // password not matching
+    // password matches
+    connection.query(sql_query,function(err,result,fields){
+        if(err)
+            console.log(err);
+        
+        if(result.length === 0)
+            res.send({name:"ERROR"});
+        else {
+            op_name = result[0].fname;
+            res.send({name:result[0].fname});
+        }
+        
+    });
+});
+
 module.exports = router;
