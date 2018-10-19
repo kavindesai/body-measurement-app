@@ -17,7 +17,7 @@ export class AttributeComponent implements OnInit {
   attribute_values = [0];
   concat_values = ['0 0'];
 
-  constructor(private _endpoints: EndpointsService, private _route: ActivatedRoute, private _router: Router) { 
+  constructor(private _endpoints: EndpointsService, private _route: ActivatedRoute, private _router: Router) {
     this._route.params.subscribe( params => {
       this.email = params.email;
       this.attribute = params.attribute;
@@ -43,6 +43,16 @@ export class AttributeComponent implements OnInit {
         this.concat_values.push(this.date_values[i] + '-----' + this.attribute_values[i]);
     }
     console.log(this.concat_values);
+  }
+
+  addVal() {
+    console.log('Add was clicked');
+    this._router.navigate(['/profile', this.email, this.attribute, 'add']);
+  }
+
+  deleteVal() {
+    console.log('Delete was clicked');
+    this._router.navigate(['/profile', this.email, this.attribute, 'delete']);
   }
 
   visualizeIt() {

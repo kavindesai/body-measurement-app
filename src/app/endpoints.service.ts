@@ -49,8 +49,13 @@ export class EndpointsService {
   }
 
   get_values(attribute: String, email: String) {
-    let test_data = { att: attribute, emailId : email};
+    const test_data = { att: attribute, emailId : email};
     console.log('About to call');
     return this._http.post<any>(this._url + '/profile', test_data);
+  }
+
+  delete_entry(date, email) {
+    const data = { d: date, emailId : email};
+    return this._http.post<any>(this._url + '/delete', data);
   }
 }

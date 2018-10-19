@@ -5,14 +5,17 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AttributeComponent } from './attribute/attribute.component';
 import { VisualizeComponent } from './visualize/visualize.component';
+import { AddComponent } from './add/add.component';
+import { DeleteComponent } from './delete/delete.component';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
+    {path: 'profile/:email/:attribute/add', component: AddComponent},
+    {path: 'profile/:email/:attribute/delete', component: DeleteComponent},
     {path: 'profile/:email/:attribute/visualize', component : VisualizeComponent},
     {path: 'profile/:email/:attribute', component : AttributeComponent},
     {path: 'profile/:email', component : ProfileComponent}
-    
 ];
 
 @NgModule({
@@ -20,4 +23,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [ LoginComponent, RegisterComponent, ProfileComponent, AttributeComponent, VisualizeComponent ];
+export const routingComponents = [ LoginComponent, RegisterComponent, ProfileComponent, AttributeComponent,
+                                    VisualizeComponent, AddComponent, DeleteComponent ];
