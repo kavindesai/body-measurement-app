@@ -54,8 +54,9 @@ export class EndpointsService {
     return this._http.post<any>(this._url + '/profile', test_data);
   }
 
-  delete_entry(date, email) {
-    const data = { d: date, emailId : email};
-    return this._http.post<any>(this._url + '/delete', data);
+  delete_entry(date: String, email: String, attribute: String) {
+    console.log('About to delet val');
+    const del_data = { d: date, emailId : email, att: attribute};
+    return this._http.post<any>(this._url + '/delete', del_data);
   }
 }

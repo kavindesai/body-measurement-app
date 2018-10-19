@@ -55,9 +55,20 @@ export class DeleteComponent implements OnInit {
     console.log(d);
     const iso_d = d.toISOString();
     console.log(iso_d);
-    let iso_d_arr = String(iso_d);
-    let iso_d_str = iso_d_arr.split('T');
+    const iso_d_arr = String(iso_d);
+    const iso_d_str = iso_d_arr.split('T');
     console.log(iso_d_str[0]);
+    this._endpoints.delete_entry(iso_d_str[0], this.email, this.attribute)
+    .subscribe(
+      res => {
+        console.log(res);
+        this._router.navigate(['/profile', this.email]);
+      }
+    );
+  }
+
+  goBack() {
+    this._router.navigate(['/profile', this.email, this.attribute]);
   }
 
 

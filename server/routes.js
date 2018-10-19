@@ -76,32 +76,13 @@ router.post('/login',function(req,res){
     });
 });
 
-// router.post('/profile/:emailID',function(req,res){
-//     console.log(req.body);
-//     console.log('~~~~~');
-//     console.log(req.param);
-//     sql_query = "SELECT date_inserted, val from "+attribute+" where email='"+email+"' ORDER BY date_inserted DESC";
-//     console.log(sql_query);
-//     connection.query(sql_query,function(err,result,fields){
-//         console.log(result);
-//     });
-//     res.send({name:"ERROR"});
-// });
-
-// router.post('/profile/k',function(req,res){
-//     console.log('I came here');
-// });
-
 router.post('/profile',function(req,res){
-    console.log(req.body);
     attribute = req.body.att;
     email = req.body.emailId;
     var date = [];
     var values = [];
     sql_query = "SELECT date_inserted, val from "+attribute+" where email='"+email+"' ORDER BY date_inserted DESC";
-    console.log(sql_query);
     connection.query(sql_query,function(err,result,fields){
-        console.log(result);
         if(result.length == 0)
             res.send({value : 'NONE'});
         else {
@@ -116,12 +97,32 @@ router.post('/profile',function(req,res){
                 date.push(final_date);
                 values.push(result[i].val);
             }
-            console.log(values);
-            console.log(date);
             res.send({value : values, date : date});
         }
     });
 });
+
+
+router.post('/delete',function(req,res){
+    console.log('Delete was touched!');
+    console.log(req.body);
+    email = req.body.emailId;
+    date = req.body.d;
+    attribute = req.body.att;
+    console.log('Delete was touched!');
+    sql_query = "DELETE from " + attribute + " where email='" + email+ "' and date_inserted='"+date+"';";
+    console.log(sql_query);
+    connection.query(sql_query,function(err,result,fields){
+        if(err)
+            throw err;
+
+            res.send({name:'DONE'});
+    });   
+
+});
+
+
+
 
 
 module.exports = router;
