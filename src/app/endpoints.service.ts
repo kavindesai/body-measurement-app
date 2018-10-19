@@ -59,4 +59,9 @@ export class EndpointsService {
     const del_data = { d: date, emailId : email, att: attribute};
     return this._http.post<any>(this._url + '/delete', del_data);
   }
+
+  add_val(date: String, value: String, email: String, attribute: String) {
+    const add_data = { d: date, e: email, v: value, a: attribute };
+    return this._http.post<any>(this._url + '/add', add_data);
+  }
 }

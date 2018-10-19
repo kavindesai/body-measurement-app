@@ -32,6 +32,18 @@ export class AddComponent implements OnInit {
     console.log(this.month);
     console.log(this.date);
     console.log(this.new_value);
+    const date_created = this.year + '-' + this.month + '-' + this.date;
+    this._endpoints.add_val(date_created, this.new_value, this.email, this.attribute)
+      .subscribe(
+        res => {
+          if (res.name === 'DUPLICATE') {
+            window.alert('Date already exists');
+          } else {
+            this._router.navigate(['/profile', this.email]);
+            }
+        },
+      );
+
   }
 
 }
